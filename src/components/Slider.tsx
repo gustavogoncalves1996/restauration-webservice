@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import RestaurantSlide from './slides/RestaurantSlide';
 import CartasSlide from './slides/CartasSlide';
 import GiftCardSlide from './slides/GiftCardSlide';
@@ -54,6 +54,31 @@ function Slider({ activeSlide, setActiveSlide, setBackgroundImage }: SliderProps
       setTimeout(() => setIsAnimating(false), 800);
     }
   };
+
+  const handleKeyDown = useCallback((e: KeyboardEvent) => {
+    if (e.key === 'ArrowRight' && activeSlide < slides.length - 1) {
+      if (!isAnimating) {
+        setIsAnimating(true);
+        const nextIndex = activeSlide + 1;
+        setActiveSlide(nextIndex);
+        setBackgroundImage(slides[nextIndex].backgroundImage);
+        setTimeout(() => setIsAnimating(false), 800);
+      }
+    } else if (e.key === 'ArrowLeft' && activeSlide > 0) {
+      if (!isAnimating) {
+        setIsAnimating(true);
+        const prevIndex = activeSlide - 1;
+        setActiveSlide(prevIndex);
+        setBackgroundImage(slides[prevIndex].backgroundImage);
+        setTimeout(() => setIsAnimating(false), 800);
+      }
+    }
+  }, [activeSlide, isAnimating, setActiveSlide, setBackgroundImage]);
+
+  useEffect(() => {
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [handleKeyDown]);
 
   return (
     <div className="relative w-full h-screen overflow-hidden">

@@ -100,7 +100,7 @@ function EspacosSlide({ onNext, onPrev }: EspacosSlideProps) {
             </nav>
           </div>
 
-          <div className="relative max-w-5xl mx-auto flex flex-col items-center">
+          <div className="relative max-w-3xl mx-auto flex flex-col items-center">
             <div className="aspect-video rounded-3xl overflow-hidden backdrop-blur-sm bg-rustic-dark/20 relative group border border-rustic-tan/30">
               <img
                 src={spaces[selectedSpace].images[currentImageIndex]}
@@ -138,12 +138,6 @@ function EspacosSlide({ onNext, onPrev }: EspacosSlideProps) {
                   />
                 ))}
               </div>
-            </div>
-
-            <div className="mt-6 text-center">
-              <p className="text-rustic-beige text-sm font-light">
-                {currentImageIndex + 1} / {spaces[selectedSpace].images.length}
-              </p>
             </div>
           </div>
         </div>

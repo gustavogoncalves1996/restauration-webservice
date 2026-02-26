@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 
 interface HeaderProps {
@@ -7,22 +6,7 @@ interface HeaderProps {
   onLogoClick: () => void;
 }
 
-const logoImages = [
-  'https://images.pexels.com/photos/262047/pexels-photo-262047.jpeg',
-  'https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg',
-  'https://images.pexels.com/photos/958545/pexels-photo-958545.jpeg',
-  'https://images.pexels.com/photos/1639562/pexels-photo-1639562.jpeg',
-  'https://images.pexels.com/photos/2788792/pexels-photo-2788792.jpeg',
-  'https://images.pexels.com/photos/1581384/pexels-photo-1581384.jpeg',
-];
-
 function Header({ onMenuClick, isSidebarOpen, onLogoClick }: HeaderProps) {
-  const [logoImage, setLogoImage] = useState('');
-
-  useEffect(() => {
-    setLogoImage(logoImages[Math.floor(Math.random() * logoImages.length)]);
-  }, []);
-
   return (
     <header className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-6">
       <button
@@ -43,7 +27,7 @@ function Header({ onMenuClick, isSidebarOpen, onLogoClick }: HeaderProps) {
         aria-label="Go to home"
       >
         <img
-          src={logoImage}
+          src="https://64.media.tumblr.com/b9db1d5dac9bed864221b0bcae855df5/877119eca8d6fb75-ac/s2048x3072/288b94cedbb12c676ac07460e0b0102d00c7f265.pnj"
           alt="Home"
           className="h-16 md:h-20 w-auto"
         />
